@@ -1,4 +1,6 @@
 <?php 
+$db = new SQLITE3('cars.sqlite');
+
 if (($handle = fopen("cars_data_NA.csv", "r")) !== FALSE) {
     // Skip the header row if your CSV file has one
     // fgetcsv($handle, 1000, ","); // Uncomment this line if your CSV has a header row

@@ -61,7 +61,7 @@ if (isset($request[1])) {
         var_dump($id);
     }
 } else {
-    $key = NULL;
+    $id = NULL;
 }
 
 # If user is trying to insert/update we need to get the data from the body
@@ -103,16 +103,16 @@ $pk = $result->columnName(0);
 # Build the SQL command based on HTTP method
 switch ($method) {
     case 'GET':
-      $sql = "SELECT * FROM `$table`" . ($key ? " WHERE $pk=$key" : '');
+      $sql = "SELECT * FROM `$table`" . ($id ? " WHERE $pk=$id" : '');
       break;
     case 'PUT':
-      $sql = "UPDATE `$table` SET $updateSet WHERE $pk=$key";
+      $sql = "UPDATE `$table` SET $updateSet WHERE $pk=$id";
       break;
     case 'POST':
       $sql = "INSERT INTO `$table` ($insertSet) VALUES ($insertVal)";
       break;
     case 'DELETE':
-      $sql = "DELETE FROM `$table` WHERE $pk=$key";
+      $sql = "DELETE FROM `$table` WHERE $pk=$id";
       break;
 }
 
