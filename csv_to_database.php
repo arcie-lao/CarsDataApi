@@ -14,14 +14,5 @@ if (($handle = fopen("cars_data_NA.csv", "r")) !== FALSE) {
         $db->exec($SQLinsert);
     }
     fclose($handle);
-
-    // Rename file after successful import
-    $newName = $target_file . ".imported";
-    if(rename($target_file, $newName)) {
-        echo "File has been renamed to " . $newName;
-    } else {
-        echo "Error renaming file to " . $newName;
-    }
-
 }
 ?>
